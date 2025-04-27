@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+
+\title{Tutorial Exercises: Probability and Measure}
+\author{Richard Harnisch (S5238366)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Tutorial 1}
+\subsection*{Exercise 1}
+
+To show that $\mathcal{A}$ is a $\sigma$-algebra, we need to verify three properties:
+\begin{itemize}
+    \item Non-empty: $\Omega \in \mathcal{A}$ \\
+    $\Omega$ is a subset of itself. Additionally, $\Omega^c = \emptyset$, which is countable. Thus $\Omega \in \mathcal{A}$.
+
+    \item Closed under complement: $A \in \mathcal{A} \implies A^c \in \mathcal{A}$ \\
+    First note that ${A^c}^c = A$. If $A \in \mathcal{A}$, then either $A$ or $A^c$ is countable. Now consider $A^c$: It is in $\mathcal{A}$ if $A^c$ or ${A^c}^c$, which is $A$, is countable. We know this must be true. Therefore, $A \in \mathcal{A} \implies A^c \in \mathcal{A}$. 
+
+    \item Closed under countable unions: $A_1, A_2, \dots, A_n \in \mathcal{A} \implies \bigcup_{i=1}^{n} A_i \in \mathcal{A}$ \\
+    For the purpose of notation, $\bigcup_{i=1}^{n} A_i := U$. We will prove this by examining two exhaustive cases. \\
+    \textbf{Case 1:} There exists an $A^c_k$ that is countable. \\
+    By DeMorgan's law, $U^c = \bigcap_{i=1}^{n} A^c_i$. Obviously, $\bigcap_{i=1}^{n} A^c_i \subset A^c_k$. Since $A^c_k$ is countable, $U^c$ is too and is in $\mathcal{A}$. \\
+    \textbf{Case 2:} There is no $A^c_k$ that is countable. \\
+    Then, every $A^c$ must be countable to be in $\mathcal{A}$. Thus $U$ is the union of a countable collection of countable sets and is therefore itself countable. Therefore $U \in \mathcal{A}$.
+\end{itemize}
+\pagebreak
+\subsection*{Exercise 2}
+\subsubsection*{(a)}
+This set is the intersection of all $A_n$. 
+Consider the set of all $A_n$. Each $A^c_n$ is in $\mathcal{A}$ by property 2 of $\sigma$-algebras, and so is their union by property three. The complement of this union must thus also be by property two, which is equal to the intersection of all $A_n$ by applying DeMorgan's law. \qed
+
+\subsubsection*{(b)}
+This set is the intersection of all $A^c_n$. 
+Consider the set of all $A^c_n$. Each ${A^c_n}^c = A$ is in $\mathcal{A}$, and so is their union by property three of $\sigma$-algebras. The complement of this union must thus also be by property two, which is equal to the intersection of all $A^c_n$. \qed
+
+\subsubsection*{(c)}
+This is the intersection of an infinite set of $A_n$. The same reasoning as for (a) holds. 
+
+\subsubsection*{(d)}
+This is the intersection of an infinite set of $A_n$. As in (c), the same reasoning as for (a) holds. 
+
+\subsection*{Exercise 3}
+\begin{align*}
+    \Omega &= \mathbb{N} \\
+    A &= \{\emptyset, \{1\}, \{1\}^c, \mathbb{N}\} \\
+    B &= \{\emptyset, \{2\}, \{2\}^c, \mathbb{N}\} \\
+    \{1\} \cup \{2\} &= \{1, 2\} \notin A \cup B
+\end{align*}
+
+$A$ and $B$ are $\sigma$-algebras, but $A \cup B$ is not by violating clusure under countable unions.
+
+\subsection*{Exercise 4}
+
+To show $\mu$ is a measure on $\Omega$, we need to verify three properties:
+\begin{itemize}
+    \item \textbf{Nonnegativity:} Any $p_n$ is a nonnegative number. Thus the sum of any collection of such $p_n$ will also be nonnegative.
+    \item \textbf{Null empty set:} $\mu(\emptyset) = 0$ because it is a sum over no summands.
+    \item \textbf{Countable additivity:} $A_1, A_2, \dots \subset \mathbb{N}$ are pairwise disjoint. Since $\mu(A_i)$ is the sum of all $p_n, n \in A_i$, and all $A_n$ are disjoint, if we take the $\mu$ of a union of $A$s, then we are simply concatenating sequences of nonnegative numbers. Taking the sum of the whole sequence or taking it piecewise and then the sum of the pieces does not change the result. Therefore $\mu$ satisfies countable additivity.
+\end{itemize}
+
+\subsection*{Exercise 5}
+\begin{itemize}
+    \item $\Omega \in \mathcal{A}$
+    \item $A \in \mathcal{A} \implies A^c \in \mathcal{A}$
+    \item $A, B \in \mathcal{A}$ disjoint $\implies A \cup B \in \mathcal{A}$
+\end{itemize}
+Show:
+\[
+    A, B \in \mathcal{A}, A \subset B \implies B \backslash A \in A
+\]
+
+\begin{align*}
+    B^c &\in \mathcal{A} \\
+    B^c \cap A &= \emptyset \\
+    B^c \cup A &\in \mathcal{A} \\
+    (B^c \cup A)^c &= B \backslash A \\
+    B \backslash A &\in \mathcal{A} \\
+    \qed
+\end{align*}
+
+
+\end{document}
