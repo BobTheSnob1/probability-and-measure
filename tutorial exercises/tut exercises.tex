@@ -83,5 +83,55 @@ Show:
     \qed
 \end{align*}
 
+\section*{Tutorial 2}
+\subsection*{Exercise 1}
+\[
+    \mathbb{P}_B = \mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+\]
+
+\subsubsection*{(a)}
+
+To show $\mathbb{P}_B$ is a probability measure, we need to show non-negativity, countable additivity and that the total mass $\mathbb{P}(\Omega) = 1$.
+
+\begin{enumerate}
+    \item \textbf{Non-negativity:} Take any $A \in \mathcal{A}$. Consider $\mathbb{P}_B (A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}$. Since $\sigma$-algebras are closed under intersections, $A \cap B \in \mathcal{A}$, so $\mathbb{P}(A\cap B) \geq 0$ since $\mathbb{P}$ is a probability measure. Since $\mathbb{P}(B) \geq 0$, both the numerator and the denominator of $\frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}$ are $\geq 0$ and so the whole fraction is too. Therefore $\forall A \in \mathcal{A}: \mathbb{P}_B (A) \geq 0$.
+
+    \item \textbf{Countable additivity:} Let $(A_i)_{i \geq 1} \subset \mathcal{A}$ be pairwise disjoint, e.g. they share no elements. We need to show:
+    \[
+        \mathbb{P}_B (\bigcup_{i \geq 1} A_i) = \sum_{i \geq 1} \mathbb{P}_B (A_i)
+    \]
+    We can consider the left-hand side of this equation:
+    \[
+        \mathbb{P}_B (\bigcup_{i \geq 1} A_i) = \frac{\mathbb{P}((\bigcup_i A_i) \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(\bigcup_i (A_i \cap B))}{\mathbb{P}(B)}
+    \]
+    Recall that $\mathbb{P}$ is countably additive. Therefore:
+    \[
+        \frac{\mathbb{P}(\bigcup_i (A_i \cap B))}{\mathbb{P}(B)} = \frac{\sum_{i \geq 1} \mathbb{P}(A_i \cap B)}{\mathbb{P}(B)} = \sum_{i \geq 1} \frac{\mathbb{P}(A_i \cap B)}{\mathbb{P}(B)} = \sum_{i \geq 1} \mathbb{P}_B (A_i)
+    \]
+    This is exactly the right-hand side. Thus $\mathbb{P}_B$ is countably additive.
+
+    \item \textbf{Normalization ($\mathbb{P}(\Omega) = 1$)}:
+    \[
+        \mathbb{P}(\Omega) = \frac{\mathbb{P}(\Omega \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B)}{\mathbb{P}(B)} = 1
+    \]
+
+\end{enumerate}
+
+\subsubsection*{(b)}
+
+\[
+    ((\mathbb{P}_{B_1})_{B_2})(A) = \mathbb{P}_{B_1} (A|B_2) = \frac{\mathbb{P}_{B_1}(A\cap B_2)}{\mathbb{P}_{B_1}(B_2)} = \frac{\mathbb{P}((A\cap B_2) | B_1)}{\mathbb{P}(B_2 | B_1)}
+\]
+\[
+    = \frac{
+        \frac{\mathbb{P}((A\cap B_2) \cap B_1)}{\mathbb{P}(B_1)}
+    }{
+        \frac{\mathbb{P}(B_2 \cap B_1)}{\mathbb{P}(B_1)}
+    }
+\]
+\[
+    = \frac{\mathbb{P}((A\cap B_2) \cap B_1)}{\mathbb{P}(B_2 \cap B_1)} = \frac{\mathbb{P}(A \cap (B_2 \cap B_1))}{\mathbb{P}(B_2 \cap B_1)} = \mathbb{P}_{B_2 \cap B_1}(A) = \mathbb{P}_{B_1 \cap B_2}(A)
+\]
+
 
 \end{document}
